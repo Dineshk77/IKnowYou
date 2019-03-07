@@ -8,25 +8,9 @@ class TimeSlotAvailabity:
 
 	def __init__(self,meetingTimeData):
 		self.meetingTimeData = meetingTimeData
-		self.checkTimeFormat()
 		overlapDetails = self.checkOverlap()
 		print ("\nTotal overlaps = "+str(len(overlapDetails))+"\n")
 		self.listAvailabilty(overlapDetails)
-
-	def checkTimeFormat(self):
-		for item in self.meetingTimeData:
-			if len(item.split("-")) < 2:
-				raise ValueError("Time format is wrong for item - "+item+", use format HH:MM-HH:MM")
-			if len((item.split("-")[0]).split(":")) < 2 or len((item.split("-")[1]).split(":")) < 2:
-				raise ValueError("Time format is wrong for item - "+item+", use format HH:MM-HH:MM")
-			if not ((item.split("-")[0]).split(":")[0]).isdigit() or not ((item.split("-")[0]).split(":")[1]).isdigit():
-				raise ValueError("Time format is wrong for item - "+item+", use format HH:MM-HH:MM")
-			if not ((item.split("-")[1]).split(":")[0]).isdigit() or not ((item.split("-")[1]).split(":")[1]).isdigit():
-				raise ValueError("Time format is wrong for item - "+item+", use format HH:MM-HH:MM")
-			if int((item.split("-")[0]).split(":")[0]) > 23 or int((item.split("-")[1]).split(":")[0]) > 23:
-				raise ValueError("Wrong time limit for item - "+item+", hour shouldn't exceed 23")
-			if int((item.split("-")[0]).split(":")[1]) > 59 or int((item.split("-")[1]).split(":")[1]) > 59:
-				raise ValueError("Wrong time limit for item - "+item+", minute shouldn't exceed 59")
 					
 	def checkOverlap(self):
 		timeOccupancy = {}
