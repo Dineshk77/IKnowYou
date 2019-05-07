@@ -1,5 +1,6 @@
 '''Command to execute:
 python TimeSlotAvailability.py 00:30-1:30,1:30-2:30,1:20-3:30,4:50-5:50,1:30-5:50,1:20-4:00,3:20-6:00
+test
 '''
 
 import sys
